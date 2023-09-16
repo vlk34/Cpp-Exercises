@@ -1,4 +1,4 @@
 # Cpp
-C++ Exercixes 
+Consists of small C++ programs.
 
-Small, basic exercises on C++
+
