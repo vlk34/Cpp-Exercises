@@ -171,12 +171,12 @@ long Account::getLastAccountNumber() {
 
 // Operator Overloads (of & if & os)
 ofstream &operator << (ofstream &ofs, Account &a) {
-    ofs << a.accountNumber << endl << a.firstName << endl << a.lastName << endl << a.balance << endl;
+    ofs << a.firstName << endl << a.lastName << endl << a.accountNumber << endl << a.balance << endl;
     return ofs;
 }
 
 ifstream &operator >> (ifstream &ifs, Account &a) {
-    ifs >> a.accountNumber >> a.firstName >> a.lastName >> a.balance;
+    ifs >> a.firstName >> a.lastName >> a.accountNumber>> a.balance;
     return ifs;
 }
 
@@ -189,9 +189,6 @@ ostream &operator << (ostream &os, Account &a) {
 Bank::Bank() {
 
     Account account;
-    ofstream outfile("Bank.data");
-    outfile.close();
-
     ifstream infile("Bank.data");
 
     // Open and insert the map into the file
@@ -199,20 +196,13 @@ Bank::Bank() {
         cout << "Error in Opening! File not found." << endl;
         return;
     }
-
-    long maxAccountNumber = 0;
-
     while (!infile.eof()) {
         infile >> account;
         accounts.insert(pair<long, Account>(account.getAccNo(), account));
-
-        if (account.getAccNo() > maxAccountNumber) {
-            maxAccountNumber = account.getAccNo();
-        }
     }  
 
     // Set last account number
-    Account::setLastAccountNumber(maxAccountNumber + 1);
+    Account::setLastAccountNumber(account.getAccNo());
     infile.close();
 }
 
