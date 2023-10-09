@@ -21,4 +21,5 @@ int main() {
     cout << convertBinary(numDec) << endl;
 
     cout << 1/2;
+    cout << 1 % 2;
 }
