@@ -9,6 +9,7 @@ void printBinaryNumber(int numDec, int nDigits);
 
 int main() {
 
+    short digits[MAX] = {0};
     short nDigits = getNumberOfDigits();    // get number of digits
     int nCombinations = getNumberOfCombinations(nDigits);   // get number of combinations
 
